@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+
+    The page of a reminder's unsubscribe link (never cached: the block is not).
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="zero.abandoned.cart.unsubscribe" cacheable="false" template="Zero_AbandonedCart::unsubscribe.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

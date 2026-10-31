@@ -19,4 +19,25 @@
                     table="zero_abandoned_cart_reminder" column="quote_id"
                     referenceTable="quote" referenceColumn="entity_id" onDelete="CASCADE"/>
     </table>
+    <table name="zero_abandoned_cart_unsubscribe" resource="default" engine="innodb" comment="Zero Abandoned Cart Unsubscribe Links">
+        <column xsi:type="varchar" name="token_hash" nullable="false" length="64" comment="SHA-256 of the Link Token"/>
+        <column xsi:type="varchar" name="email_hash" nullable="false" length="64" comment="SHA-256 of the Email"/>
+        <column xsi:type="smallint" name="website_id" unsigned="true" nullable="false" comment="Website"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Sent At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="token_hash"/>
+        </constraint>
+        <index referenceId="ZERO_ABANDONED_CART_UNSUBSCRIBE_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
+    </table>
+    <table name="zero_abandoned_cart_optout" resource="default" engine="innodb" comment="Zero Abandoned Cart Reminder Opt-Outs">
+        <column xsi:type="varchar" name="email_hash" nullable="false" length="64" comment="SHA-256 of the Email"/>
+        <column xsi:type="smallint" name="website_id" unsigned="true" nullable="false" comment="Website"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Unsubscribed At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="email_hash"/>
+            <column name="website_id"/>
+        </constraint>
+    </table>
 </schema>

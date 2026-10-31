@@ -11,10 +11,16 @@
             <resource>Zero_AbandonedCart::config</resource>
             <group id="general" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
-                <comment><![CDATA[One email per cart left with items in it, when its email is known: a customer's, or a guest's who entered it at the checkout. The email lists the items and links back to the cart. Sent by cron every 10 minutes; <code>bin/magento zero:abandoned-cart:send --dry-run</code> lists the carts due.]]></comment>
+                <comment><![CDATA[One email per cart left with items in it, when its email is known: a customer's, or a guest's who entered it at the checkout and is subscribed to the newsletter (Guest Carts). The email lists the items, links back to the cart and has an unsubscribe link; an email that used it gets no more reminders on this website. Sent by cron every 10 minutes; <code>bin/magento zero:abandoned-cart:send --dry-run</code> lists the carts due.]]></comment>
                 <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="guests" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Guest Carts</label>
+                    <comment>A guest's cart gets a reminder only when its email is subscribed to the newsletter on this website. Every reminder has an unsubscribe link.</comment>
+                    <source_model>Zero\AbandonedCart\Model\Config\Source\Guests</source_model>
+                    <depends><field id="enabled">1</field></depends>
                 </field>
                 <field id="delay" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Send After (minutes)</label>

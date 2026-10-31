@@ -11,5 +11,29 @@
             "ZERO_ABANDONED_CART_REMINDER_TOKEN": true,
             "ZERO_ABANDONED_CART_REMINDER_QUOTE_ID_QUOTE_ENTITY_ID": true
         }
+    },
+    "zero_abandoned_cart_unsubscribe": {
+        "column": {
+            "token_hash": true,
+            "email_hash": true,
+            "website_id": true,
+            "created_at": true
+        },
+        "index": {
+            "ZERO_ABANDONED_CART_UNSUBSCRIBE_CREATED_AT": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "zero_abandoned_cart_optout": {
+        "column": {
+            "email_hash": true,
+            "website_id": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
     }
 }

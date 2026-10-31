@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © 2026 Roman Pasichnyk
+ * SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+ *
+ * The unsubscribe link's page: a POST form (with the form key) that stops
+ * the cart reminders, and a way out. The token is in the session, not here.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+<div class="zero-abandoned-cart-unsubscribe flex flex-col gap-4 max-w-2xl">
+    <p><?= $escaper->escapeHtml(__("We'll stop emailing you about the carts you leave in this store. Other emails, such as order confirmations, still come.")) ?></p>
+    <form method="post" action="<?= $escaper->escapeUrl($block->getUrl('abandonedcart/unsubscribe/confirm')) ?>" class="flex flex-wrap items-center gap-4">
+        <?= $block->getBlockHtml('formkey') ?>
+        <button type="submit" class="btn btn-primary"><?= $escaper->escapeHtml(__('Stop cart reminders')) ?></button>
+        <a class="link text-sm" href="<?= $escaper->escapeUrl($block->getBaseUrl()) ?>"><?= $escaper->escapeHtml(__('Keep the reminders')) ?></a>
+    </form>
+</div>

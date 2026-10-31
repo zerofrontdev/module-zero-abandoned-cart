@@ -44,7 +44,8 @@ class Index implements HttpGetActionInterface
     public function execute(): Redirect
     {
         $redirect = $this->redirectFactory->create()->setPath('checkout/cart');
-        $quoteId = $this->reminders->quoteIdByToken((string) $this->request->getParam('token'));
+        $tokenParam = $this->request->getParam('token');
+        $quoteId = $this->reminders->quoteIdByToken(is_scalar($tokenParam) ? (string) $tokenParam : '');
         try {
             $quote = $quoteId === null ? null : $this->quoteRepository->get($quoteId);
         } catch (NoSuchEntityException) {

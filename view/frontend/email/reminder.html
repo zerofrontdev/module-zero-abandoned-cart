@@ -8,6 +8,7 @@
 <!--@vars {
 "var customer_name":"Customer First Name",
 "var restore_url":"Link Back to the Cart",
+"var unsubscribe_url":"Unsubscribe Link",
 "var store.frontend_name":"Store Frontend Name",
 "layout handle=\"zero_abandoned_cart_email_items\" quote_id=$quote_id":"Cart Items Grid"
 } @-->
@@ -44,6 +45,7 @@
                 </tr>
             </table>
             <p>{{trans "Prices and stock may have changed since. If you've placed your order already, ignore this email: it's the only reminder."}}</p>
+            <p class="unsubscribe">{{trans "Don't want these reminders?"}} <a href="{{var unsubscribe_url}}">{{trans "Unsubscribe from cart reminders"}}</a></p>
         </td>
     </tr>
 </table>

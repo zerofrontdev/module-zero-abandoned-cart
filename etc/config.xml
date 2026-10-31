@@ -10,6 +10,7 @@
                 <enabled>0</enabled>
                 <delay>60</delay>
                 <max_age>7</max_age>
+                <guests>newsletter</guests>
                 <identity>sales</identity>
                 <template>zero_abandoned_cart_general_template</template>
             </general>
